@@ -17,6 +17,7 @@ namespace ALSiteBack
             builder.Services.AddControllers();
             
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IActualDateRepository, ActualDateRepository>();
 
 /*            builder.Services.AddCors(options =>
             {

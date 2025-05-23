@@ -11,6 +11,7 @@ namespace ALSiteBack.Helper
         public MappingProfiles()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<ActualDate, ActualDateDto>().ReverseMap();
         }
         
     }

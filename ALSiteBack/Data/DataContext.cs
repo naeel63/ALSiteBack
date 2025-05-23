@@ -12,5 +12,6 @@ namespace ALSiteBack.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<ActualDate> ActualDates { get; set; }
     }
 }
