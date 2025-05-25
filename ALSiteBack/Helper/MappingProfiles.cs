@@ -12,6 +12,7 @@ namespace ALSiteBack.Helper
         {
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ActualDate, ActualDateDto>().ReverseMap();
+            CreateMap<Contact, ContactDto>().ReverseMap();
         }
         
     }
