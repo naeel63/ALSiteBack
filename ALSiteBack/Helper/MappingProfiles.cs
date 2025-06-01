@@ -10,7 +10,12 @@ namespace ALSiteBack.Helper
     {
         public MappingProfiles()
         {
-            CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Product, ProductDto>()
+                //.ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.Group.Id))
+                .ReverseMap();
+            CreateMap<ActualDate, ActualDateDto>().ReverseMap();
+            CreateMap<Contact, ContactDto>().ReverseMap();
+            CreateMap<Group, GroupDto>().ReverseMap();
         }
         
     }

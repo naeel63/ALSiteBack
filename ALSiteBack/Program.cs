@@ -17,14 +17,18 @@ namespace ALSiteBack
             builder.Services.AddControllers();
             
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IActualDateRepository, ActualDateRepository>();
+            builder.Services.AddScoped<IContactRepository, ContactRepository>();
+            builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 
-/*            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins("file:///C:/Users/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80/Desktop/front/index.html") // Замените на ваш домен
-                                        .AllowAnyHeader()
-                                        .AllowAnyMethod());
-            });*/
+            /*
+             * builder.Services.AddCors(options =>
+                    {
+                        options.AddPolicy("AllowSpecificOrigin",
+                            builder => builder.WithOrigins("file:///C:/Users/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80/Desktop/front/index.html") // Замените на ваш домен
+                                                .AllowAnyHeader()
+                                                .AllowAnyMethod());
+                    });*/
 
             builder.Services.AddCors(options =>
             {

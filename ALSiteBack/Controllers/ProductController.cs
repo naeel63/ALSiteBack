@@ -22,12 +22,13 @@ namespace ALSiteBack.Controllers
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(List<Product>))]
-        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public IActionResult GetProducts()
         {
-            var products = _mapper.Map<List<ProductDto>>(_productRepository.GetProducts());
-
+            var products = _productRepository.GetProducts();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
             return Ok(products);
         }
     }
