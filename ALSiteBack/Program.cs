@@ -19,6 +19,7 @@ namespace ALSiteBack
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IActualDateRepository, ActualDateRepository>();
             builder.Services.AddScoped<IContactRepository, ContactRepository>();
+            builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 
             /*
              * builder.Services.AddCors(options =>

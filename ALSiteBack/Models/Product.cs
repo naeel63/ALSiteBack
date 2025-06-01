@@ -6,5 +6,7 @@
         public string Code { get; set; }
         public string Name { get; set; }
         public int Ostatok { get; set; }
+        public Group Group { get; set; }
+        public ICollection<ProductCart> ProductCarts { get; set; }
     }
 }

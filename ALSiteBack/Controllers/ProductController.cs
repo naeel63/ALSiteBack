@@ -25,7 +25,7 @@ namespace ALSiteBack.Controllers
         [ProducesResponseType(500)]
         public IActionResult GetProducts()
         {
-            var products = _mapper.Map<List<ProductDto>>(_productRepository.GetProducts());
+            var products = _productRepository.GetProducts();
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
