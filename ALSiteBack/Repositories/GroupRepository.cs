@@ -18,7 +18,7 @@ namespace ALSiteBack.Repositories
         {
             return _context.Groups
                 .Where(g => g.ParentId == null)
-                .Select(g => new Group { Id = g.Id, Name = g.Name })
+                .Include(g => g.Children)
                 .ToList();
         }
 
