@@ -35,7 +35,8 @@ namespace ALSiteBack
 
             builder.Services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                //options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreConnection"));
             });
 
             var app = builder.Build();

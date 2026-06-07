@@ -35,6 +35,9 @@ namespace ALSiteBack.Controllers
         public IActionResult GetMainGroups(int GroupId)
         {
             var group = _mapper.Map<GroupDto>(_groupRepository.GetGroup(GroupId));
+            if (group == null) {
+                return NotFound();
+            }
             return Ok(group);
         }
     }
