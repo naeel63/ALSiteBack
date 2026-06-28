@@ -23,9 +23,11 @@ namespace ALSiteBack.Controllers
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(List<Product>))]
         [ProducesResponseType(500)]
-        public IActionResult GetProducts()
+        public async Task<IActionResult> GetProducts(
+            [FromQuery] int page,
+            [FromQuery] int pageSize)
         {
-            var products = _productRepository.GetProducts();
+            var products = await _productRepository.GetProducts(page, pageSize);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             

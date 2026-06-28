@@ -4,6 +4,6 @@ namespace ALSiteBack.Interfaces
 {
     public interface IActualDateRepository
     {
-        ActualDate GetActualDate();
+        Task<ActualDate> GetActualDate();
     }
 }

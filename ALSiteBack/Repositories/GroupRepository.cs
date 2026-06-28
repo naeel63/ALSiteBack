@@ -14,23 +14,24 @@ namespace ALSiteBack.Repositories
             _context = context;
         }
 
-        public ICollection<Group> GetMainGroups()
+        public async Task<ICollection<Group>> GetMainGroups()
         {
-            return _context.Groups
+            return await _context.Groups
                 .Where(g => g.ParentId == null)
                 .Include(g => g.Children)
-                .ToList();
+                .Include(g => g.Products)
+                .ToListAsync();
         }
 
-        public Group GetGroup(int id)
+        public async Task<Group> GetGroup(int id)
         {
-            return 
+            return await
                 _context
                 .Groups
                 .Where(g => g.Id == id)
                 .Include(g => g.Children)
                 .Include(g => g.Products)
-                .First();
+                .FirstAsync();
         }
     }
 }

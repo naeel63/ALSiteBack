@@ -1,6 +1,7 @@
 ﻿using ALSiteBack.Data;
 using ALSiteBack.Interfaces;
 using ALSiteBack.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ALSiteBack.Repositories
 {
@@ -13,9 +14,9 @@ namespace ALSiteBack.Repositories
             _context = context;
         }
 
-        public ICollection<Contact> GetContacts()
+        public async Task<ICollection<Contact>> GetContacts()
         {
-            return _context.Contacts.OrderBy(c => c.Id).ToList();
+            return await _context.Contacts.OrderBy(c => c.Id).ToListAsync();
         }
     }
 }

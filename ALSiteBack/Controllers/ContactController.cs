@@ -21,9 +21,10 @@ namespace ALSiteBack.Controllers
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(List<Contact>))]
         [ProducesResponseType(500)]
-        public IActionResult GetContacts()
+        public async Task<IActionResult> GetContacts()
         {
-            var contacts = _mapper.Map<List<Contact>>(_contactRepository.GetContacts());
+            var _contacts = await _contactRepository.GetContacts();
+            var contacts = _mapper.Map<List<Contact>>(_contacts);
 
             if (!ModelState.IsValid)
             {

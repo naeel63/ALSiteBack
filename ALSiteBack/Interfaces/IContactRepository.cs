@@ -4,6 +4,6 @@ namespace ALSiteBack.Interfaces
 {
     public interface IContactRepository
     {
-        ICollection<Contact> GetContacts();
+        Task<ICollection<Contact>> GetContacts();
     }
 }

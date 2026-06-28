@@ -1,6 +1,8 @@
 ﻿using ALSiteBack.Data;
+using ALSiteBack.Dto.Pagination;
 using ALSiteBack.Interfaces;
 using ALSiteBack.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ALSiteBack.Repositories
 {
@@ -13,9 +15,24 @@ namespace ALSiteBack.Repositories
             _context = context;
         }
 
-        public ICollection<Product> GetProducts()
+        public async Task<PagedResult<Product>> GetProducts(int page, int pageSize)
         {
-            return _context.Products.OrderBy(p => p.Id).ToList();
+            var query = _context.Products.AsNoTracking().OrderBy(p => p.Id);
+
+            var totalCount = await query.CountAsync();
+
+            var items = await query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+            return new PagedResult<Product>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            };
         }
     }
 }

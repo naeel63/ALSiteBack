@@ -22,9 +22,10 @@ namespace ALSiteBack.Controllers
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(ActualDate))]
         [ProducesResponseType(500)]
-        public IActionResult GetActualDate()
+        public async Task<IActionResult> GetActualDate()
         {
-            var actualDate = _mapper.Map<ActualDateDto>(_actualDateRepository.GetActualDate());
+            var _actualDate = await _actualDateRepository.GetActualDate();
+            var actualDate = _mapper.Map<ActualDateDto>(_actualDate);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 

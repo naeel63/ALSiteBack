@@ -1,9 +1,10 @@
-﻿using ALSiteBack.Models;
+﻿using ALSiteBack.Dto.Pagination;
+using ALSiteBack.Models;
 
 namespace ALSiteBack.Interfaces
 {
     public interface IProductRepository
     {
-        ICollection<Product> GetProducts();
+        Task<PagedResult<Product>> GetProducts(int page, int pageSize);
     }
 }

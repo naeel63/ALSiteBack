@@ -4,7 +4,7 @@ namespace ALSiteBack.Interfaces
 {
     public interface IGroupRepository
     {
-        public ICollection<Group> GetMainGroups();
-        public Group GetGroup(int id);
+        public Task<ICollection<Group>> GetMainGroups();
+        public Task<Group> GetGroup(int id);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ALSiteBack.Data;
 using ALSiteBack.Interfaces;
 using ALSiteBack.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ALSiteBack.Repositories
 {
@@ -12,9 +13,9 @@ namespace ALSiteBack.Repositories
         {
             _context = context;
         }
-        public ActualDate GetActualDate()
+        public async Task<ActualDate> GetActualDate()
         {
-            return _context.ActualDates.OrderBy(ad => ad.Id).Last();
+            return await _context.ActualDates.OrderBy(ad => ad.Id).LastAsync();
         }
     }
 }
