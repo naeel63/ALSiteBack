@@ -30,8 +30,14 @@ namespace ALSiteBack.Controllers
             var products = await _productRepository.GetProducts(page, pageSize);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            
-            return Ok(products);
+
+            return Ok(new
+            {
+                Products = products.Items,
+                products.TotalCount,
+                products.Page,
+                products.PageSize
+            });
         }
     }
 }
