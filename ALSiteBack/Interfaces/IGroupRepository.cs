@@ -6,5 +6,6 @@ namespace ALSiteBack.Interfaces
     {
         public Task<ICollection<Group>> GetMainGroups();
         public Task<Group> GetGroup(int id);
+        public Task<int> GetGroupCount(int id);
     }
 }

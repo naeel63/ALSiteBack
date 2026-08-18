@@ -1,4 +1,5 @@
 ﻿using ALSiteBack.Data;
+using ALSiteBack.Dto.Pagination;
 using ALSiteBack.Interfaces;
 using ALSiteBack.Models;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,6 @@ namespace ALSiteBack.Repositories
             return await _context.Groups
                 .Where(g => g.ParentId == null)
                 .Include(g => g.Children)
-                .Include(g => g.Products)
                 .ToListAsync();
         }
 
@@ -33,5 +33,12 @@ namespace ALSiteBack.Repositories
                 .Include(g => g.Products)
                 .FirstAsync();
         }
+        public async Task<int> GetGroupCount(int id)
+        {
+            return await _context.Products
+                .CountAsync(p => p.Group.Id == id);
+        }
+
+        
     }
 }

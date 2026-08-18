@@ -8,6 +8,5 @@
         public int Ostatok { get; set; }
         public int Price { get; set; }
         public Group Group { get; set; }
-        public ICollection<ProductCart> ProductCarts { get; set; }
     }
 }

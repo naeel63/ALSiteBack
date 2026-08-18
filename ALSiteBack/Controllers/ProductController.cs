@@ -39,5 +39,26 @@ namespace ALSiteBack.Controllers
                 products.PageSize
             });
         }
+
+        [HttpGet("GroupProducts")]
+        [ProducesResponseType(200, Type = typeof(List<Product>))]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> GetGroupProducts(
+            [FromQuery] int groupId,
+            [FromQuery] int page,
+            [FromQuery] int pageSize)
+        {
+            var products = await _productRepository.GetGroupProducts(groupId, page, pageSize);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(new
+            {
+                Products = products.Items,
+                products.TotalCount,
+                products.Page,
+                products.PageSize
+            });
+        }
     }
 }

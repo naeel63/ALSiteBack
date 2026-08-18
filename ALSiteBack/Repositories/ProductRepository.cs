@@ -34,5 +34,25 @@ namespace ALSiteBack.Repositories
                 PageSize = pageSize
             };
         }
+
+        public async Task<PagedResult<Product>> GetGroupProducts(int groupId, int page, int pageSize)
+        {
+            var query = _context.Products.AsNoTracking().Where(p => p.Group.Id == groupId).OrderBy(p => p.Id);
+
+            var totalCount = await query.CountAsync();
+
+            var items = await query
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+            return new PagedResult<Product>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            };
+        }
     }
 }

@@ -43,5 +43,14 @@ namespace ALSiteBack.Controllers
             }
             return Ok(group);
         }
+
+        [HttpGet("Count/{GroupId}")]
+        [ProducesResponseType(200, Type = typeof(Group))]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> GetGroupCount(int GroupId)
+        {
+            var _group = await _groupRepository.GetGroupCount(GroupId);
+            return Ok(_group);
+        }
     }
 }
